@@ -2,7 +2,7 @@ package herencia;
 
 import java.time.LocalDate;
 
-public class Empleado extends Persona {
+public abstract class Empleado extends Persona {
 	private long legajo;
 	
 	public Empleado(String nombre, String apellido, long dni, LocalDate fechaNacimiento, long legajo) {
@@ -15,8 +15,6 @@ public class Empleado extends Persona {
 		return legajo;
 	}
 	
-	public float calcularSueldo() {
-		return 0;
-	}
+	public abstract float calcularSueldo();
 
 }

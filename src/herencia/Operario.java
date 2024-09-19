@@ -4,9 +4,11 @@ import java.time.LocalDate;
 
 public class Operario extends Empleado {
 
-	public Operario(String nombre, String apellido, long dni, LocalDate fechaNacimiento, long legajo) {
+	private float valorHora;
+
+	public Operario(String nombre, String apellido, long dni, LocalDate fechaNacimiento, long legajo, float valorHora) {
 		super(nombre, apellido, dni, fechaNacimiento, legajo);
-		// TODO Auto-generated constructor stub
+		this.valorHora = valorHora;
 	}
 
 }

@@ -2,7 +2,9 @@ package herencia;
 
 import java.time.LocalDate;
 
-public class Vendedor extends Empleado {
+import interfaces.IPorComision;
+
+public class Vendedor extends Empleado implements IPorComision{
 
 	private Cliente cartera;
 	private float comisionPorcentual;
@@ -11,6 +13,17 @@ public class Vendedor extends Empleado {
 		super(nombre, apellido, dni, fechaNacimiento, legajo);
 		this.cartera = cartera;
 		this.comisionPorcentual = comisionPorcentual;
+	}
+
+	@Override
+	public float calcularComision() {
+		return comisionPorcentual * 0.05f;
+	}
+
+	@Override
+	public float calcularSueldo() {
+		// TODO Auto-generated method stub
+		return comisionPorcentual + calcularComision();
 	}
 	
 	
