@@ -2,15 +2,16 @@ package herencia;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.GregorianCalendar;
 
 public class Persona {
 
 	protected String nombre;
 	protected String apellido;
 	protected long dni;
-	protected LocalDate fechaNacimiento;
+	protected GregorianCalendar  fechaNacimiento;
 	
-	public Persona(String nombre, String apellido, long dni, LocalDate fechaNacimiento) {
+	public Persona(String nombre, String apellido, long dni, GregorianCalendar  fechaNacimiento) {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.dni = dni;
@@ -29,13 +30,17 @@ public class Persona {
 		return dni;
 	}
 	
-	private LocalDate getFechaNacimiento() {
+	private GregorianCalendar  getFechaNacimiento() {
 		return fechaNacimiento;
 	}
 	
 	public int calcularEdad(LocalDate fecha)  {
-		Period periodo = Period.between( fechaNacimiento, fecha);
-		return periodo.getYears();
+		 LocalDate fechaNac = LocalDate.of(
+		            fechaNacimiento.get(GregorianCalendar.YEAR),
+		            fechaNacimiento.get(GregorianCalendar.MONTH) + 1, 
+		            fechaNacimiento.get(GregorianCalendar.DAY_OF_MONTH)
+		        );
+		        return Period.between(fechaNac, fecha).getYears();
 	}
 	
 	@Override
